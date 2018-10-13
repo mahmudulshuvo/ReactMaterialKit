@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import LandingPage from "./views/LandingPage/LandingPage";
-import LoginPage from "./views/LoginPage/LoginPage";
-import HomePage from "./views/HomePage/HomePage";
-import { Switch, Route } from "react-router-dom";
+// import LandingPage from "./views/LandingPage/LandingPage";
+// import LoginPage from "./views/LoginPage/LoginPage";
+// import HomePage from "./views/HomePage/HomePage";
+// import ProfilePage from "./views/ProfilePage/ProfilePage";
+// import UserProfile from "./views/UserProfile/UserProfile";
+// import { Switch, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -11,10 +13,12 @@ class App extends Component {
         {/* <LandingPage /> */}
         {/* <LoginPage /> */}
         {/* <HomePage /> */}
-        <Switch>
+        {/* <ProfilePage /> */}
+        {/* <UserProfile /> */}
+        {/* <Switch>
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/Home-page" component={HomePage} />
-        </Switch>
+        </Switch> */}
       </div>
     );
   }

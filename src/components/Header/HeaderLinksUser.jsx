@@ -21,6 +21,13 @@ import headerLinksStyle from "assets/jss/material-kit-react/components/headerLin
 import navbarsStyle from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.jsx";
 import profileImage from "assets/img/faces/avatar.jpg";
 
+function handleDropDown(event) {
+  console.log(event.currentTarget.textContent);
+  if (event.currentTarget.textContent === "Me") {
+    <Link to="/profile-page" className="link" />;
+  }
+}
+
 function HeaderLinksUser({ ...props }) {
   const { classes } = props;
   return (
@@ -46,22 +53,10 @@ function HeaderLinksUser({ ...props }) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          justIcon
-          round
-          href="#pablo"
-          className={classes.notificationNavLink}
-          onClick={e => e.preventDefault()}
-          color="rose"
-        >
-          <Email className={classes.icons} />
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
         <CustomDropdown
           left
           caret={false}
-          hoverColor="black"
+          hoverColor="primary"
           dropdownHeader="Dropdown Header"
           buttonText={
             <img src={profileImage} className={classes.img} alt="profile" />
@@ -71,6 +66,7 @@ function HeaderLinksUser({ ...props }) {
             color: "transparent"
           }}
           dropdownList={["Me", "Settings and other stuff", "Sign out"]}
+          onClick={handleDropDown.bind(event)}
         />
       </ListItem>
     </List>

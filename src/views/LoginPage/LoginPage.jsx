@@ -51,7 +51,7 @@ class LoginPage extends React.Component {
       <div>
         <Header
           color="transparent"
-          brand="Brand Name/Logo"
+          brand="Material Kit React"
           rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{

@@ -3,10 +3,6 @@ import React from "react";
 import classNames from "classnames";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-// @material-ui/icons
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
-import Favorite from "@material-ui/icons/Favorite";
 // core components
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
@@ -14,25 +10,30 @@ import Button from "components/CustomButtons/Button.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import NavPills from "components/NavPills/NavPills.jsx";
+import HeaderLinksUser from "components/Header/HeaderLinksUser.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
-
-import profile from "assets/img/faces/christian.jpg";
-
-import studio1 from "assets/img/examples/studio-1.jpg";
-import studio2 from "assets/img/examples/studio-2.jpg";
-import studio3 from "assets/img/examples/studio-3.jpg";
-import studio4 from "assets/img/examples/studio-4.jpg";
-import studio5 from "assets/img/examples/studio-5.jpg";
-import work1 from "assets/img/examples/olu-eletu.jpg";
-import work2 from "assets/img/examples/clem-onojeghuo.jpg";
-import work3 from "assets/img/examples/cynthia-del-rio.jpg";
-import work4 from "assets/img/examples/mariya-georgieva.jpg";
-import work5 from "assets/img/examples/clem-onojegaw.jpg";
-
+import profile from "assets/img/faces/avatar.jpg";
+import UserProfile from "../UserProfile/UserProfile";
+import TestTable from "../TestTable/TestTable";
+import ReactTransitionGroup from "react-transition-group";
 import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.jsx";
+import "./ProfilePage.css";
+
+function FirstChild(props) {
+  const childrenArray = React.Children.toArray(props.children);
+  return childrenArray[0] || null;
+}
 
 class ProfilePage extends React.Component {
+  state = {
+    isEdit: false
+  };
+  editProfile() {
+    this.setState(prevState => ({
+      isEdit: !prevState.isEdit
+    }));
+  }
+
   render() {
     const { classes, ...rest } = this.props;
     const imageClasses = classNames(
@@ -46,7 +47,7 @@ class ProfilePage extends React.Component {
         <Header
           color="transparent"
           brand="Material Kit React"
-          rightLinks={<HeaderLinks />}
+          rightLinks={<HeaderLinksUser />}
           fixed
           changeColorOnScroll={{
             height: 200,
@@ -57,6 +58,7 @@ class ProfilePage extends React.Component {
         <Parallax small filter image={require("assets/img/profile-bg.jpg")} />
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div>
+            {/* <UserProfile /> */}
             <div className={classes.container}>
               <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={6}>
@@ -88,8 +90,13 @@ class ProfilePage extends React.Component {
                   intimate feel with a solid groove structure.{" "}
                 </p>
               </div>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={8} className={classes.navWrapper}>
+              {/* <GridContainer justify="center">
+                <GridItem
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  className={classes.navWrapper}
+                >
                   <NavPills
                     alignCenter
                     color="primary"
@@ -203,8 +210,41 @@ class ProfilePage extends React.Component {
                     ]}
                   />
                 </GridItem>
-              </GridContainer>
+              </GridContainer> */}
             </div>
+            <div className={classes.container} style={{ height: "70px" }}>
+              <Button
+                color="primary"
+                style={{ float: "right" }}
+                onClick={this.editProfile.bind(this)}
+              >
+                Edit Profile
+              </Button>
+            </div>
+
+            {/* {this.state.isEdit ? (
+              <ReactCSSTransitionGroup
+                transitionName="example"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}
+              >
+                <div key="transition-group-content">
+                  <UserProfile />
+                </div>
+              </ReactCSSTransitionGroup>
+            ) : null} */}
+
+            {this.state.isEdit ? <UserProfile /> : null}
+            {/* <ReactTransitionGroup
+              component={FirstChild}
+              transitionName="example"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}
+            >
+              {this.state.isEdit ? <UserProfile /> : null}
+            </ReactTransitionGroup> */}
+
+            <TestTable />
           </div>
         </div>
         <Footer />
