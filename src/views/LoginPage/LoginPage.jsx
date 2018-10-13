@@ -82,7 +82,7 @@ class LoginPage extends React.Component {
                 <Button
                   color="danger"
                   size="lg"
-                  href="/Home-page"
+                  href="/home"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ marginRight: "20px" }}
