@@ -45,6 +45,13 @@ class LoginPage extends React.Component {
     console.log("clicked");
   }
 
+  onGetStart() {
+    let firstName = document.getElementById("first");
+    let email = document.getElementById("email");
+    let pass = document.getElementById("pass");
+    console.log(firstName.value + " " + email.value + " " + pass.value);
+  }
+
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -82,11 +89,10 @@ class LoginPage extends React.Component {
                 <Button
                   color="danger"
                   size="lg"
-                  href="/home"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ marginRight: "20px" }}
-                  onClick={this.redirectToHomePage.bind(this)}
+                  onClick={() => this.props.history.push("/home")}
                 >
                   {/* <i className="fas fa-play" /> */}
                   Take a free tour
@@ -189,7 +195,12 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
+                      <Button
+                        simple
+                        color="primary"
+                        size="lg"
+                        onClick={this.onGetStart}
+                      >
                         Get started
                       </Button>
                     </CardFooter>
@@ -198,7 +209,13 @@ class LoginPage extends React.Component {
               </GridItem>
             </GridContainer>
           </div>
-          <div style={{ width: "100%", height: "100px", marginTop: "50px" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "100px",
+              marginTop: "50px"
+            }}
+          >
             <Footer whiteFont />
           </div>
         </div>

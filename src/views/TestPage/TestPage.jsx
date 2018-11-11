@@ -21,11 +21,13 @@ class TestPage extends React.Component {
     // we use this to make the card to appear after the page has been rendered
     this.state = {
       cardAnimaton: "cardHidden",
-      selectedEnabled: "b"
+      selectedEnabled: "b",
+      getState: props.state
     };
     this.handleChangeEnabled = this.handleChangeEnabled.bind(this);
   }
   componentDidMount() {
+    // console.log("data from card: " + this.props.location.state.detail);
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
       function() {
@@ -41,6 +43,7 @@ class TestPage extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props;
+    console.log("rest props", this.props.location.state.generate);
     const wrapperDiv = classNames(
       classes.checkboxAndRadio,
       classes.checkboxAndRadioHorizontal
@@ -91,7 +94,7 @@ class TestPage extends React.Component {
           <div>
             <div className={classes.container} style={{ paddingTop: "20px" }}>
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -117,7 +120,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -146,7 +149,7 @@ class TestPage extends React.Component {
               </GridContainer>
 
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -172,7 +175,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -201,7 +204,7 @@ class TestPage extends React.Component {
               </GridContainer>
 
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -227,7 +230,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -256,7 +259,7 @@ class TestPage extends React.Component {
               </GridContainer>
 
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -282,7 +285,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>

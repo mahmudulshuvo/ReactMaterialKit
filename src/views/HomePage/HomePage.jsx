@@ -7,7 +7,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import CustomSelect from "components/Header/CustomSelect.jsx";
@@ -20,13 +19,8 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import { cardTitle } from "assets/jss/material-kit-react.jsx";
 import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.jsx";
 import navbarsStyle from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.jsx";
-
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
-
-// @material-ui/icons
-import { Apps, CloudDownload } from "@material-ui/icons";
+import CustomDropdown from "../../components/CustomDropdown/CustomDropdown";
+import { Apps } from "@material-ui/icons";
 
 const style = {
   cardTitle,
@@ -38,11 +32,19 @@ const style = {
   }
 };
 
-function handleSelect(event) {
-  console.log("clicked");
-}
-
 class HomePage extends React.Component {
+  state = {
+    dropdownList: ["Generate 20", "Generate 50", "Generate 100"],
+    selectedItem: ""
+  };
+
+  handleSelect = event => {
+    console.log(event.currentTarget.textContent);
+    this.setState({
+      selectedItem: event.currentTarget.textContent
+    });
+  };
+
   render() {
     const { classes, ...rest } = this.props;
     const imageClasses = classNames(
@@ -90,8 +92,34 @@ class HomePage extends React.Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <CustomSelect />
-                      <Button color="primary">Do something</Button>
+                      <CustomDropdown
+                        buttonText={
+                          this.state.selectedItem === ""
+                            ? "Please select first"
+                            : this.state.selectedItem
+                        }
+                        buttonProps={{
+                          className: classes.navLink,
+                          color: "transparent"
+                        }}
+                        buttonIcon={Apps}
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
+                      <Button
+                        color="primary"
+                        onClick={() =>
+                          this.props.history.push({
+                            pathname: "/test",
+                            state: {
+                              subject: "Bangla",
+                              generate: this.state.selectedItem
+                            }
+                          })
+                        }
+                      >
+                        Do something
+                      </Button>
                     </CardBody>
                   </Card>
                 </GridItem>
@@ -115,8 +143,23 @@ class HomePage extends React.Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <CustomSelect />
-                      <Button color="primary">Do something</Button>
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
+                      <Button
+                        color="primary"
+                        onClick={() =>
+                          this.props.history.push({
+                            pathname: "/test",
+                            state: {
+                              detail: "English"
+                            }
+                          })
+                        }
+                      >
+                        Do something
+                      </Button>
                     </CardBody>
                   </Card>
                 </GridItem>
@@ -140,84 +183,10 @@ class HomePage extends React.Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <CustomSelect />
-                      <Button color="primary">Do something</Button>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-              </GridContainer>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={4}>
-                  <Card>
-                    <img
-                      style={{
-                        height: "180px",
-                        width: "100%",
-                        display: "block"
-                      }}
-                      className={classes.imgCardTop}
-                      src={require("assets/img/bg4.jpg")}
-                      alt="Card-img-cap"
-                    />
-                    <CardBody>
-                      <h4 className={classes.cardTitle}>
-                        Special title treatment
-                      </h4>
-                      <p>
-                        With supporting text below as a natural lead-in to
-                        additional content.
-                      </p>
-                      <CustomSelect />
-                      <Button color="primary">Do something</Button>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Card>
-                    <img
-                      style={{
-                        height: "180px",
-                        width: "100%",
-                        display: "block"
-                      }}
-                      className={classes.imgCardTop}
-                      src={require("assets/img/bg4.jpg")}
-                      alt="Card-img-cap"
-                    />
-                    <CardBody>
-                      <h4 className={classes.cardTitle}>
-                        Special title treatment
-                      </h4>
-                      <p>
-                        With supporting text below as a natural lead-in to
-                        additional content.
-                      </p>
-                      <CustomSelect />
-                      <Button color="primary">Do something</Button>
-                    </CardBody>
-                  </Card>
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Card>
-                    <img
-                      style={{
-                        height: "180px",
-                        width: "100%",
-                        display: "block"
-                      }}
-                      className={classes.imgCardTop}
-                      src={require("assets/img/bg4.jpg")}
-                      alt="Card-img-cap"
-                    />
-                    <CardBody>
-                      <h4 className={classes.cardTitle}>
-                        Special title treatment
-                      </h4>
-                      <p>
-                        With supporting text below as a natural lead-in to
-                        additional content.
-                      </p>
-                      <CustomSelect />
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
                       <Button color="primary">Do something</Button>
                     </CardBody>
                   </Card>
@@ -244,7 +213,10 @@ class HomePage extends React.Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <CustomSelect />
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
                       <Button color="primary">Do something</Button>
                     </CardBody>
                   </Card>
@@ -269,7 +241,10 @@ class HomePage extends React.Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <CustomSelect />
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
                       <Button color="primary">Do something</Button>
                     </CardBody>
                   </Card>
@@ -294,7 +269,96 @@ class HomePage extends React.Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <CustomSelect />
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
+                      <Button color="primary">Do something</Button>
+                    </CardBody>
+                  </Card>
+                </GridItem>
+              </GridContainer>
+              <GridContainer justify="center">
+                <GridItem xs={12} sm={12} md={4}>
+                  <Card>
+                    <img
+                      style={{
+                        height: "180px",
+                        width: "100%",
+                        display: "block"
+                      }}
+                      className={classes.imgCardTop}
+                      src={require("assets/img/bg4.jpg")}
+                      alt="Card-img-cap"
+                    />
+                    <CardBody>
+                      <h4 className={classes.cardTitle}>
+                        Special title treatment
+                      </h4>
+                      <p>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </p>
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
+                      <Button color="primary">Do something</Button>
+                    </CardBody>
+                  </Card>
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <Card>
+                    <img
+                      style={{
+                        height: "180px",
+                        width: "100%",
+                        display: "block"
+                      }}
+                      className={classes.imgCardTop}
+                      src={require("assets/img/bg4.jpg")}
+                      alt="Card-img-cap"
+                    />
+                    <CardBody>
+                      <h4 className={classes.cardTitle}>
+                        Special title treatment
+                      </h4>
+                      <p>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </p>
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
+                      <Button color="primary">Do something</Button>
+                    </CardBody>
+                  </Card>
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <Card>
+                    <img
+                      style={{
+                        height: "180px",
+                        width: "100%",
+                        display: "block"
+                      }}
+                      className={classes.imgCardTop}
+                      src={require("assets/img/bg4.jpg")}
+                      alt="Card-img-cap"
+                    />
+                    <CardBody>
+                      <h4 className={classes.cardTitle}>
+                        Special title treatment
+                      </h4>
+                      <p>
+                        With supporting text below as a natural lead-in to
+                        additional content.
+                      </p>
+                      <CustomSelect
+                        dropdownList={this.state.dropdownList}
+                        onClick={this.handleSelect}
+                      />
                       <Button color="primary">Do something</Button>
                     </CardBody>
                   </Card>

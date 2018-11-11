@@ -17,7 +17,8 @@ import UserProfile from "../UserProfile/UserProfile";
 import TestTable from "../TestTable/TestTable";
 import ReactTransitionGroup from "react-transition-group";
 import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.jsx";
-import "./ProfilePage.css";
+import CustomInput from "components/CustomInput/CustomInput.jsx";
+// import "./ProfilePage.css";
 
 function FirstChild(props) {
   const childrenArray = React.Children.toArray(props.children);
@@ -26,7 +27,7 @@ function FirstChild(props) {
 
 class ProfilePage extends React.Component {
   state = {
-    isEdit: false
+    isEdit: true
   };
   editProfile() {
     this.setState(prevState => ({
@@ -83,12 +84,24 @@ class ProfilePage extends React.Component {
                 </GridItem>
               </GridContainer>
               <div className={classes.description}>
-                <p>
+                <CustomInput
+                  id="regular"
+                  inputProps={{
+                    placeholder:
+                      "An artist of considerable range, Chet Faker — the name taken",
+                    disabled: this.state.isEdit,
+                    multiline: true
+                  }}
+                  formControlProps={{
+                    fullWidth: true
+                  }}
+                />
+                {/* <p>
                   An artist of considerable range, Chet Faker — the name taken
                   by Melbourne-raised, Brooklyn-based Nick Murphy — writes,
                   performs and records all of his own music, giving it a warm,
                   intimate feel with a solid groove structure.{" "}
-                </p>
+                </p> */}
               </div>
               {/* <GridContainer justify="center">
                 <GridItem

@@ -18,24 +18,30 @@ import Button from "components/CustomButtons/Button.jsx";
 
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
+function handleSelect(event) {
+  console.log("on Change called", event.currentTarget.textContent);
+}
+
 function CustomSelect({ ...props }) {
   const { classes } = props;
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <CustomDropdown
-          noLiPadding
           buttonText="Components"
           buttonProps={{
             className: classes.navLink,
             color: "transparent"
           }}
           buttonIcon={Apps}
-          dropdownList={[
-            <span className={classes.dropdownLink}>Generate 20</span>,
-            <span className={classes.dropdownLink}>Generate 50</span>,
-            <span className={classes.dropdownLink}>Generate 100</span>
-          ]}
+          dropdownList={props.dropdownList}
+          onClick={handleSelect}
+
+          // dropdownList={[
+          //   <span className={classes.dropdownLink}>Generate 20</span>,
+          //   <span className={classes.dropdownLink}>Generate 50</span>,
+          //   <span className={classes.dropdownLink}>Generate 100</span>
+          // ]}
         />
       </ListItem>
     </List>

@@ -39,8 +39,35 @@ function HeaderLinksUser({ ...props }) {
           onClick={e => e.preventDefault()}
           color="transparent"
         >
-          Discover
+          Home
         </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          buttonText="Cards"
+          buttonProps={{
+            className: classes.navLink,
+            color: "transparent"
+          }}
+          dropdownList={[
+            <Link to="/" className={classes.dropdownLink}>
+              All components
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              All components
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              All components
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              All components
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              All components
+            </Link>
+          ]}
+        />
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
@@ -49,7 +76,7 @@ function HeaderLinksUser({ ...props }) {
           onClick={e => e.preventDefault()}
           color="transparent"
         >
-          Feed
+          Prev
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
