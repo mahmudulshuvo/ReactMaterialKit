@@ -21,22 +21,23 @@ import headerLinksStyle from "assets/jss/material-kit-react/components/headerLin
 import navbarsStyle from "assets/jss/material-kit-react/views/componentsSections/navbarsStyle.jsx";
 import profileImage from "assets/img/faces/avatar.jpg";
 
-function handleDropDown(event) {
-  console.log(event.currentTarget.textContent);
-  if (event.currentTarget.textContent === "Me") {
-    <Link to="/profile-page" className="link" />;
-  }
-}
+// function handleDropDown(event) {
+//   console.log(event.currentTarget.textContent);
+//   if (event.currentTarget.textContent === "Me") {
+//     <Link to="/profile" className={} />;
+//   }
+// }
 
 function HeaderLinksUser({ ...props }) {
+  console.log("props", props);
   const { classes } = props;
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <Button
-          href="#pablo"
+          href="/home"
           className={classes.navLink}
-          onClick={e => e.preventDefault()}
+          // onClick={e => e.preventDefault()}
           color="transparent"
         >
           Home
@@ -44,47 +45,10 @@ function HeaderLinksUser({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <CustomDropdown
-          noLiPadding
-          buttonText="Cards"
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent"
-          }}
-          dropdownList={[
-            <Link to="/" className={classes.dropdownLink}>
-              All components
-            </Link>,
-            <Link to="/" className={classes.dropdownLink}>
-              All components
-            </Link>,
-            <Link to="/" className={classes.dropdownLink}>
-              All components
-            </Link>,
-            <Link to="/" className={classes.dropdownLink}>
-              All components
-            </Link>,
-            <Link to="/" className={classes.dropdownLink}>
-              All components
-            </Link>
-          ]}
-        />
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="#pablo"
-          className={classes.navLink}
-          onClick={e => e.preventDefault()}
-          color="transparent"
-        >
-          Prev
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <CustomDropdown
           left
           caret={false}
           hoverColor="primary"
-          dropdownHeader="Dropdown Header"
+          dropdownHeader="Menu"
           buttonText={
             <img src={profileImage} className={classes.img} alt="profile" />
           }
@@ -92,8 +56,14 @@ function HeaderLinksUser({ ...props }) {
             className: classes.navLink + " " + classes.imageDropdownButton,
             color: "transparent"
           }}
-          dropdownList={["Me", "Settings and other stuff", "Sign out"]}
-          onClick={handleDropDown.bind(event)}
+          dropdownList={[
+            <Link to="/profile" className={classes.dropdownLink}>
+              Me
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              Sign out
+            </Link>
+          ]}
         />
       </ListItem>
     </List>

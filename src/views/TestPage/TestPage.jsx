@@ -22,28 +22,67 @@ class TestPage extends React.Component {
     this.state = {
       cardAnimaton: "cardHidden",
       selectedEnabled: "b",
-      getState: props.state
+      numberOfradios: 0
     };
     this.handleChangeEnabled = this.handleChangeEnabled.bind(this);
   }
   componentDidMount() {
     // console.log("data from card: " + this.props.location.state.detail);
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
-    setTimeout(
-      function() {
-        this.setState({ cardAnimaton: "" });
-      }.bind(this),
-      700
-    );
+    // setTimeout(
+    //   function() {
+    //     this.setState({ cardAnimaton: "" });
+    //   }.bind(this),
+    //   700
+    // );
+    this.setState({
+      numberOfradios: parseInt(this.props.location.state.generate.slice(9))
+    });
   }
 
   handleChangeEnabled(event) {
     this.setState({ selectedEnabled: event.target.value });
   }
 
+  radioContainer = (RadioButton, numberOfradios) => {
+    let values = [];
+    for (let i = 0; i < numberOfradios; i++) {
+      values.push(
+        <GridItem xs={12} sm={12} md={12}>
+          <Card style={{ background: "#eee" }}>
+            <CardBody>
+              <p>
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={6}>
+                  <RadioButton />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <RadioButton value="b" />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={6}>
+                  <RadioButton value="c" />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <RadioButton value="d" />
+                </GridItem>
+              </GridContainer>
+            </CardBody>
+          </Card>
+        </GridItem>
+      );
+    }
+    return values;
+  };
+
   render() {
     const { classes, ...rest } = this.props;
-    console.log("rest props", this.props.location.state.generate);
+    console.log("rest props", this.state.numberOfradios);
+
     const wrapperDiv = classNames(
       classes.checkboxAndRadio,
       classes.checkboxAndRadioHorizontal
@@ -94,7 +133,8 @@ class TestPage extends React.Component {
           <div>
             <div className={classes.container} style={{ paddingTop: "20px" }}>
               <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={12}>
+                {this.radioContainer(RadioButton, this.state.numberOfradios)}
+                {/* <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
                       <p>
@@ -146,9 +186,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-              </GridContainer>
 
-              <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
@@ -201,9 +239,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-              </GridContainer>
 
-              <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
@@ -256,9 +292,7 @@ class TestPage extends React.Component {
                     </CardBody>
                   </Card>
                 </GridItem>
-              </GridContainer>
 
-              <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={12}>
                   <Card style={{ background: "#eee" }}>
                     <CardBody>
@@ -310,7 +344,8 @@ class TestPage extends React.Component {
                       </GridContainer>
                     </CardBody>
                   </Card>
-                </GridItem>
+                </GridItem>{" "}
+                */}
               </GridContainer>
             </div>
           </div>
