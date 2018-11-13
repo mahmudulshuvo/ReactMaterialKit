@@ -9,21 +9,14 @@ import Footer from "components/Footer/Footer.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import HeaderLinksUser from "components/Header/HeaderLinksUser.jsx";
 import Parallax from "components/Parallax/Parallax.jsx";
 import profile from "assets/img/faces/avatar.jpg";
 import UserProfile from "../UserProfile/UserProfile";
 import TestTable from "../TestTable/TestTable";
-import ReactTransitionGroup from "react-transition-group";
 import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
 // import "./ProfilePage.css";
-
-function FirstChild(props) {
-  const childrenArray = React.Children.toArray(props.children);
-  return childrenArray[0] || null;
-}
 
 class ProfilePage extends React.Component {
   state = {
@@ -42,7 +35,6 @@ class ProfilePage extends React.Component {
       classes.imgRoundedCircle,
       classes.imgFluid
     );
-    const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
     return (
       <div>
         <Header

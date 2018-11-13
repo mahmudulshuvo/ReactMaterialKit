@@ -1,10 +1,5 @@
 import { container, title } from "assets/jss/material-kit-react.jsx";
-import {
-  primaryColor,
-  dangerColor,
-  roseColor,
-  grayColor
-} from "assets/jss/material-kit-react.jsx";
+import { primaryColor, dangerColor } from "assets/jss/material-kit-react.jsx";
 
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.jsx";
 

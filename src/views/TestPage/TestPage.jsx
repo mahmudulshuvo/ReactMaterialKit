@@ -49,7 +49,7 @@ class TestPage extends React.Component {
               </p>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
-                  <RadioButton />
+                  <RadioButton value="a" />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <RadioButton value="b" />
@@ -73,19 +73,17 @@ class TestPage extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props;
-    console.log("rest props", this.state.numberOfradios);
-
-    const wrapperDiv = classNames(
-      classes.checkboxAndRadio,
-      classes.checkboxAndRadioHorizontal
-    );
 
     const RadioButton = value => (
-      <div className={wrapperDiv}>
+      <div
+        className={
+          classes.checkboxAndRadio + " " + classes.checkboxAndRadioHorizontal
+        }
+      >
         <FormControlLabel
           control={
             <Radio
-              checked={this.state.selectedEnabled === { value }}
+              checked={this.state.selectedEnabled === "a"}
               onChange={this.handleChangeEnabled}
               value={value}
               name="radio button enabled"
